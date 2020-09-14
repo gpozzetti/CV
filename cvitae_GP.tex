@@ -1,13 +1,15 @@
  \documentclass[11pt,a4paper]{moderncv}
 % moderncv themes
-\moderncvtheme[black]{casual}                  % optional argument are 'blue' (default), 'orange', 'green', 'red', 'purple', 'grey' and 'roman' (for roman fonts, instead of sans serif fonts)
+\moderncvtheme[black]{classic}                  % optional argument are 'blue' (default), 'orange', 'green', 'red', 'purple', 'grey' and 'roman' (for roman fonts, instead of sans serif fonts)
 %\moderncvtheme[green]{classic}                % idem
 
 % character encoding
 \usepackage[utf8]{inputenc}                   % replace by the encoding you are using
 
 % adjust the page margins
-\usepackage[scale=0.8]{geometry}
+\usepackage[scale=0.85]{geometry}
+\usepackage{qrcode}
+%\usepackage{hyperref}
 %\setlength{\hintscolumnwidth}{3cm}						% if you want to change the width of the column with the dates
 %\AtBeginDocument{\setlength{\maketitlenamewidth}{1cm}}  % only for the classic theme, if you want to change the width of your name placeholder (to leave more space for your address details
 %\AtBeginDocument{\recomputelengths}                     % required when changes are made to page layout lengths
@@ -19,8 +21,8 @@
 
 % personal data
 \firstname{\Huge Gabriele}
-\familyname{\Huge Pozzetti}
-\title{\Large Ph.D.}               % optional, remove the line if not wanted
+\familyname{\Huge Pozzetti, Ph.D.}
+%\title{\Large Ph.D.}               % optional, remove the line if not wanted
 %\address{38 Rue de Beggen}{L-1220 Luxembourg}    % optional, remove the line if not wanted
 %\mobile{+30 698 4385057}                    % optional, remove the line if not wanted
 \phone{+352 661 357 883}                      % optional, remove the line if not wanted
@@ -41,6 +43,32 @@
 %\usepackage{multibib}
 %\newcites{book,misc}{{Books},{Others}}
 
+\usepackage{xcolor}
+
+\colorlet{languagecolor}{black}
+\colorlet{nolanguagecolor}{gray}
+\newcount\languagecount
+\newcommand\languageknowledge[2]
+  {%
+    \hbox
+      {%
+        \makebox[4cm][l]{#1}%
+        \languagecount=0
+        \loop\ifnum\languagecount<#2
+          \advance\languagecount1
+          \textcolor{languagecolor}{$\bullet$}%
+        \repeat
+        \loop\ifnum\languagecount<6
+          \advance\languagecount1
+          \textcolor{nolanguagecolor}{$\bullet$}%
+        \repeat
+      }%
+  }
+  
+\newcommand\mybitem[1]{%
+    \parbox[t]{3mm}{\textbullet}\parbox[t]{15cm}{#1}\\[1.6mm]}
+
+
 %\nopagenumbers{}                             % uncomment to suppress automatic page numbering for CVs longer than one page
 %----------------------------------------------------------------------------------
 %            content
@@ -60,14 +88,17 @@
 % \end{minipage}
 %\vspace{0.1cm}
 \section{Positions}
-\cventry{ 2018-now}{Project Manager}{CERATIZIT Luxembourg}{Responsible for CFD simulations for CERATIZIT Group, responsible for HPC solutions for CERATIZIT Luxembourg, Leader of fundamental research projects on machine learning and image processing}{}{}
+\cventry{ 2018-now}{Project Manager}{CERATIZIT Luxembourg}{}{}{\mybitem{Responsible for CFD simulations services across CERATIZIT Group} \mybitem{Responsible for HPC soulutions for CERATIZIT Luxembourg} \mybitem{Leader of CERATIZIT  functional team for Machine Learning and Image Processing} }
 % \cventry{2018}{Visiting Scientist}{SINQ 2018 }{PSI, Switzerland}{High resolution neutron tomography of Tungsten Carbide}{}
 %\cventry{8/2018}{Visiting Scientist}{SINQ 2018 }{PSI, Switzerland}{Low resulution neutron tomography of Tungsten Carbide}{}
-\cventry{ 2017}{Application Engineer}{Wikki London (Parallelization of an OpenFOAM library)}{}{}{}{}
 
-\cventry{ 2016}{Application Engineer}{Inutech GmbH Nuremberg (Parallelization of a multiphysics solver)}{\textit{https://inutech.de}}{}{}{}
+\cventry{2017-2018}{Consultant}{ERDF-2016-01-002-06 Digital Twin project}{}{}{}
+% \cventry{2015-2017}{Consultant}{European project: F1R ING PEU 12AMST}{}{}{}{}
+\cventry{ 2017}{Algorithm Engineer}{Wikki London}{}{Parallelization of an OpenFOAM library}{}{}{}
 
-\cventry{2015-2018}{Software Developer}{XDEM GROUP (coupling interface between open-source and licensed simulation software)}{\textit{http://luxdem.uni.lu}}{}{}{}
+\cventry{ 2016}{Algorithm Engineer}{Inutech GmbH Nuremberg}{}{Parallelization of a multiphysics solver}{}{}{}
+
+\cventry{2015-2018}{Software Developer}{XDEM Group}{}{Coupling of open-source and licensed simulation software}{}{}{}{}
 
 %\cventry{2016-now}{Scientific collaborator: Reducing the Impact of Floods by Advanced Simulation Technology}{In collaboration with FNR, LIST}{}{}{}
 
@@ -78,37 +109,26 @@
 \section{Education}
 \cventry{2015-2018}{PhD in Computational Engineering}{University of Luxembourg}{}{}{}
 \cventry{2012-2014}{Master in Nuclear and Energetical Engineering}{University of Bologna}{}{}{}%{(110 cum Laude, exams average 30/30)}
-\cventry{2009-2012}{Bachelor degree in Energetical Engineering}{University of Bologna}{}{}{}  
+\cventry{2009-2012}{Bachelor in Energetical Engineering}{University of Bologna}{}{}{}  
 
 \section{Post-Graduate Training}
 \cventry{2020}{FTM Management Training}{CERATIZIT}{}{}{}
 \cventry{2019}{SCRUM Agile Project Management Framework}{Emendare}{}{}{}
 \cventry{2019}{Fundamentals of Deep Learning}{NVIDIA Deep Learning Institute}{}{}{}{}
-\cventry{2017}{IP and R\&D}{University of Luxembourg}{(Doctoral Education)}{}{}
+\cventry{2017}{IP and R\&D}{University of Luxembourg}{Doctoral Education}{}{}
 % \cventry{2016}{Large Eddy Simulations: Theory and Applications}{Von Karman Institute \textit{http://vki.com}}{}{}{}
-\cventry{2015}{High Performance Computing School}{University of Luxembourg}{(Doctoral Education)}{}{}
-\cventry{2016}{Conflict Management}{University of Luxembourg}{(Doctoral Education)}{}{}
-\cventry{2016}{Scientific Presentation Skills}{University of Luxembourg}{(Doctoral Education)}{}{}
+\cventry{2015}{High Performance Computing School}{University of Luxembourg}{}{}{}
+\cventry{2016}{Conflict Management}{University of Luxembourg}{}{}{}
+\cventry{2016}{Scientific Presentation Skills}{University of Luxembourg}{}{}{}
 
 % \section{Selected Projects}
 % \cventry{2020-Current}{Industrial Project Manager}{HybridSimCVD FNR Luxembourg}{}{}{}
 % \cventry{2018-Current}{Industrial Project Manager}{VP4HPC FNR Luxembourg}{}{}{}
-% \cventry{2017-2018}{Consultant}{ERDF-2016-01-002-06 Digital Twin project}{}{}{}
-% \cventry{2015-2017}{Consultant}{European project: F1R ING PEU 12AMST}{}{}{}{}
 
-\section{Recognitions}
-\cvline{2018}{Outstanding Contribution in Reviewing \textit{Powder Technology.}}
- \cvline{2018}{Excellence in Ph.D. research \textit{University of Luxembourg.}}
-\cvline{2013-2014}{Winner  of the Excellence and  Merit award 2013 \textit{University of Bologna.}}
 
-% \section{Organization of Events}
-% \cventry{2018}{Organizer}{Symposium at WCCM2018}{\textit{http://www.wccm2018.org}}{}{}
-% 
-% \cventry{2017}{Principal Organizer}{ Symposium  at ICNAAM2017}{\textit{https://icnaam.org}}{}{}{}
-% 
-% 
-% 
-% \cventry{2016}{Organizer}{ Symposium  at ICNAAM2016}{\textit{https://icnaam.org}}{}{}{}
+
+
+
 
 % \cventry{2014}{Intern}{Integration of the \textit{Libmesh} FEM Code into the \textit{Salome} platform}{DIN}{Bologna}{}{}
 % 
@@ -124,18 +144,71 @@
 % \section{Reviewing Activity}
 % \cvline{}{ Served as reviewer for \textit{Powder Technology} , \textit{Particulogy} , \textit{Industrial \& Engineering Chemistry Research} and \textit{Applied Mathematical Modelling}.}
 
+% \begin{minipage}[b]{.3\linewidth}
+% \cvlanguage{French}{B2}{}
+% \cvlanguage{Spanish}{B1}{}
+% \end{minipage}
+% \begin{minipage}[b]{.3\linewidth}
+% \cvlanguage{German}{A2}{}
+% \end{minipage}
+
+
+\begin{minipage}[t]{0.45\linewidth}
 \section{Languages}
-\begin{minipage}[b]{.3\linewidth}
-\cvlanguage{Italian}{C2}{} 
-\cvlanguage{English}{C1/C2}{}
+\cvlanguage{C2}{Italian}{}
+\cvlanguage{C2}{English}{}
+\cvlanguage{B2}{French}{}
+\cvlanguage{B1}{Spanish}{}
+\cvlanguage{A2}{German}{}
+% \languageknowledge{Italian}{6}
+% \languageknowledge{English}{6}
+% \languageknowledge{French}{4}
+% \languageknowledge{Spanish}{4}
+% \languageknowledge{German}{2}
 \end{minipage}
-\begin{minipage}[b]{.3\linewidth}
-\cvlanguage{French}{B2}{}
-\cvlanguage{Spanish}{B1}{}
+\begin{minipage}[t]{0.05\linewidth}
+\- 
 \end{minipage}
-\begin{minipage}[b]{.3\linewidth}
-\cvlanguage{German}{A2}{}
+\begin{minipage}[t]{0.45\linewidth}
+\section{Recognitions}
+\cvline{Powder Technology}{Outstanding Contribution in Reviewing }
+ \cvline{University of Luxembourg}{Excellence in Ph.D. research }
+\cvline{University of Bologna}{Excellence and  Merit award 2013}
 \end{minipage}
+
+
+\vspace{0.2in}
+%\section{Useful Links}
+\begin{minipage}[b]{.5\linewidth} 
+\begin{flushleft}
+\qrcode[hyperlink,height=1.2in]{https://www.linkedin.com/in/gabriele-pozzetti-289079134/}\\ \vspace{0.1in}
+\href{https://www.linkedin.com/in/gabriele-pozzetti-289079134/}{Linkedin}
+\end{flushleft}
+\end{minipage}
+% \begin{minipage}[b]{.5\linewidth}
+% \section{Languages}
+% \languageknowledge{Italian}{6}
+% \languageknowledge{English}{6}
+% \languageknowledge{French}{4}
+% \languageknowledge{Spanish}{4}
+% \languageknowledge{German}{2}
+% \end{minipage}
+\begin{minipage}[b]{.5\linewidth}
+\begin{flushright}
+\qrcode[hyperlink,height=1.2in]{https://scholar.google.com/citations?user=A-AGeScAAAAJ&hl=it&oi=ao}\\ \vspace{0.1in}
+\href{https://scholar.google.com/citations?user=A-AGeScAAAAJ&hl=it&oi=ao}{Google Scholar}
+\end{flushright}
+\end{minipage}
+
+\section{Reviewing Activity}
+\cvline{}{ Served as reviewer for\textit{Journal of Computational Physics}, \textit{Powder Technology} , \textit{Particulogy} , \textit{Industrial \& Engineering Chemistry Research} and \textit{Applied Mathematical Modelling}.}
+
+\section{Organization of Events}
+\cventry{2018}{Organizer}{Symposium at WCCM2018}{\textit{http://www.wccm2018.org}}{}{}
+
+\cventry{2017}{Principal Organizer}{ Symposium  at ICNAAM2017}{\textit{https://icnaam.org}}{}{}{}
+
+\cventry{2016}{Organizer}{ Symposium  at ICNAAM2016}{\textit{https://icnaam.org}}{}{}{}
 % \section{Informatics}
 % \cvline{Basic}{\small  Ruby, nanoc, Mathematica, XML, COMSOL Multiphysics\textregistered }
 % \cvline{Intermediate}{\small Matlab, GNU Octave, MPI, Dakota}
@@ -144,7 +217,7 @@
 \section{Selected Publications}
 % \cvline{}{ \newline \textit{}}\cvline{}{ G. Pozzetti, B. Peters
 \small
-\cvline{2019} {B.Peters, \textbf{G.Pozzetti}
+\cvline{2020} {B.Peters, \textbf{G.Pozzetti}
 \textit{Numerical Analysis of Powder Deposition in Direct Material Injection} Granular Matter.}
 
 \cvline{2019}{ E.Rabadan Santana, \textbf{G. Pozzetti}, B. Peters
@@ -171,21 +244,21 @@
 \cvline{2017}{ \textbf{G. Pozzetti}, B. Peters
 \textit{Evaluating Erosion Patterns in an abrasive water jet cutting nozzle using XDEM} Advances in Powder Metallurgy and Particulate Materials.}
 
-%\cvline{2017}{ \textbf{G. Pozzetti}, B. Peters
-%\textit{On the performances of an overlapping domain parallelization strategy for Eulerian-Lagrangian Multiphysics software} AIP CP.}
-%\cvline{2017}{ \textbf{G. Pozzetti}, B. Peters
-%\textit{Flow characteristics of metallic powder grains for additive manufacturing} EPJ WC.}
+\cvline{2017}{ \textbf{G. Pozzetti}, B. Peters
+\textit{On the performances of an overlapping domain parallelization strategy for Eulerian-Lagrangian Multiphysics software} AIP CP.}
+\cvline{2017}{ \textbf{G. Pozzetti}, B. Peters
+\textit{Flow characteristics of metallic powder grains for additive manufacturing} EPJ WC.}
 
-%\cvline{2017}{ \textbf{G. Pozzetti}, B. Peters
-%\textit{On the choice of a phase interchange strategy for a Multiscale DEM-VOF method} AIP CP.}
+% \cvline{2017}{ \textbf{G. Pozzetti}, B. Peters
+% \textit{On the choice of a phase interchange strategy for a Multiscale DEM-VOF method} AIP CP.}
 
-%\cvline{2015}{D.Cerroni, S.Manservisi and \textbf{G. Pozzetti},
-%\textit{A preliminary investigation of the growth of an aneurysm with a multiscale monolithic Fluid-Structure interaction solver} Journal of Physics CS DOI: 10.1088/1742-6596/655/1/012050.}
+\cvline{2015}{D.Cerroni, S.Manservisi and \textbf{G. Pozzetti},
+\textit{A preliminary investigation of the growth of an aneurysm with a multiscale monolithic Fluid-Structure interaction solver} Journal of Physics CS DOI: 10.1088/1742-6596/655/1/012050.}
 
-%\cvline{2015}{D Cerroni  , R Da Via , S Manservisi , F Menghini  , \textbf{G. Pozzetti}  and R Scardovelli
-%\textit{Numerical validation of a $k-\omega-k_{\theta}-\omega_{\theta}$  heat transfer turbulence model for heavy liquid metals} Journal of Physics CS DOI:10.1088/1742-6596/655/1/012046.}
+\cvline{2015}{D Cerroni  , R Da Via , S Manservisi , F Menghini  , \textbf{G. Pozzetti}  and R Scardovelli
+\textit{Numerical validation of a $k-\omega-k_{\theta}-\omega_{\theta}$  heat transfer turbulence model for heavy liquid metals} Journal of Physics CS DOI:10.1088/1742-6596/655/1/012046.}
 
-% %Minor Pubblications
+%Minor Pubblications
 % \cvline{}{ G. Pozzetti, X.Besseron, A. Rousset, B.Peters
 % \textit{A parallel multiscale DEM-VOF Method for large scale simulations of three phase flows
 % } ECCM-ECFD2018), Glasgow 2018}
@@ -200,20 +273,20 @@
 % \cvline{}{D.Cerroni, S.Manservisi,F. Menghini and G. Pozzetti, \textit{Multiscale approach for LFR on Salome Platform }Presentazione progetto FALCON General Workshop 17-18 July 2014, Centro Ricerche Brasimone, Pubblished online }
 % \cvline{}{G.Pozzetti, S.Manservisi, E. Aulisa, D. Cerroni, and R.Scardovelli \textit{FEM Multiscale Fluid-Structure Interaction Simulations for Biological applications}(Master thesis)}
 % \cvline{}{G.Pozzetti, E. Zanchini \textit{Evolution of the ground temperature caused by the action of Borehole heat exchangers set with negligible groundwater movement}(Bachelor Thesis)}
-
+% 
 % \subsection{\textbf{Currently under consideration}}
 % 
 % 
 % 
 % \cvline{2019} {M.Baniasadi, M.Baniasadi, \textbf{G.Pozzetti}, B.Peters
 % \textit{A numerical study on the softening process of iron ore particles in the cohesive zone of an experimental blast furnace using a coupled CFD-DEM method} (https://arxiv.org/abs/1806.08114) Chemical Engineering Sciences}
-
-\normalsize
-
-
-\section{Selected Presentations at Scientific Conferences}
-% \cvline{2015-2018}{Presented at 9 international conferences hosting accademical and industrial audience.}
 % 
+% \normalsize
+
+
+\section{Selected Scientific Conferences}
+% % \cvline{2015-2018}{Presented at 9 international conferences hosting accademical and industrial audience.}
+% % 
 \cvline{}{ G. Pozzetti,
 \textit{A parallel multiscale DEM-VOF Method for large scale simulations of three phase flows} ECCM-ECFD2018, Glasgow}
 \cvline{}{ G. Pozzetti,
@@ -224,12 +297,12 @@
 \textit{Evaluating Erosion Patterns in an Abrasive Water Jet Cutting Nozzle using XDEM} POWDERMET2017, Las Vegas}
 \cvline{}{ G. Pozzetti
 \textit{On the choice of a phase interchange strategy for a Multiscale DEM-VOF method} International Conference of Numerical Analysis and applied mathematics ICNAAM2016, Rhodes}
-\cvline{}{ G. Pozzetti
-\textit{A LES-DEM-VOF Method for Turbulent three phase flows} International Conference of Multiphase flows ICMF2016, Florence}
-\cvline{}{ G. Pozzetti
-\textit{A preliminary study on the stability of turbulent particle laden jets with a fully coupled CFD-DEM approach} International Conference of Multiphase flows ICMF2016 Florence (poster)}
-\cvline{}{ G. Pozzetti
-\textit{On the influence of the mapping technique for a multiscale approach to turbulent three phase flows} ECCOMAS 2016 Crete}
+% \cvline{}{ G. Pozzetti
+% \textit{A LES-DEM-VOF Method for Turbulent three phase flows} International Conference of Multiphase flows ICMF2016, Florence}
+% \cvline{}{ G. Pozzetti
+% \textit{A preliminary study on the stability of turbulent particle laden jets with a fully coupled CFD-DEM approach} International Conference of Multiphase flows ICMF2016 Florence (poster)}
+% \cvline{}{ G. Pozzetti
+% \textit{On the influence of the mapping technique for a multiscale approach to turbulent three phase flows} ECCOMAS 2016 Crete}
 
 
 
@@ -241,5 +314,7 @@
 % \section{Capacità e competenze relazionali}
 % \cvline{}{Sono stato vice-presidente dell'associazione di volontariato Poggeschi per il carcere la quale propone dei laboratori interdisciplinari da affrontare con i detenuti del carcere Dozza. 
 % Sono inoltre un volontario della Croce Rossa del comitato locale di Fabriano.}
+
+
 
 \end{document}
